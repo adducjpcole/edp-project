@@ -1,5 +1,11 @@
 // import axios from "axios";
 
+function delay(ms) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), ms);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const postsContainer = document.getElementById("postsContainer");
   const loading = document.getElementById("loading");
@@ -8,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   async function fetchPosts() {
     showLoading(true);
     try {
+      await delay(5000);
+
       const res = await fetch(API_URL);
 
       if (!res.ok) throw new Error("Failed to fetch posts");
